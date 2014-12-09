@@ -238,17 +238,21 @@
 		};
 	})();
 
+	var initButtonsPopup = function(){
+		jQuery('.rrssb-buttons a.popup').on('click', function(e){
+			var _this = jQuery(this);
+			popupCenter(_this.attr('href'), _this.find('.rrssb-text').html(), 580, 470);
+			e.preventDefault();
+		});
+	}
+
 	// init load
 	jQuery(document).ready(function(){
 		/*
 		 * Event listners
 		 */
 
-		jQuery('.rrssb-buttons a.popup').on('click', function(e){
-			var _this = jQuery(this);
-			popupCenter(_this.attr('href'), _this.find('.rrssb-text').html(), 580, 470);
-			e.preventDefault();
-		});
+		initButtonsPopup();
 
 		// resize function
 		jQuery(window).resize(function () {
@@ -265,5 +269,6 @@
 
 	// Make global
 	window.rrssbInit = rrssbInit;
+	window.rrssbInitPopups = initButtonsPopup;
 
 })(window, jQuery);
